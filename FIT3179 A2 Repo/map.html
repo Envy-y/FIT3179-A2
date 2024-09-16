@@ -9,43 +9,52 @@
         <div id="vis"></div>
         <script>
             const spec = {
-                "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-                "title": "Victorian Council Map",
-                "width": 1000,
-                "height": 500,
+            "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+            "title": "Victorian Council Map",
+            "width": 800,
+            "height": 400,
+            "projection": {"type": "mercator"},
+            "layer": [
+            {
+            "data": {
+            "url": "https://raw.githubusercontent.com/Envy-y/FIT3179-A2/main/FIT3179%20A2%20Repo/georef-australia-local-government-area%40public.json",
+            "format": {
+                "type": "topojson",
+                "feature": "georef-australia-local-government-area@public"
+            }
+            },
+            "transform": [
+            {
+                "lookup": "properties.lga_name",
+                "from": {
                 "data": {
-                            "url": "https://raw.githubusercontent.com/Envy-y/FIT3179-A2/main/FIT3179%20A2%20Repo/output.json",
-                            "format": {"type": "topojson", "feature": "georef-australia-local-government-area@public"}
-                        },
-                "projection": {"type": "mercator"},
-                "transform": [
-                    {
-                    "lookup": "properties.lga_name",
-                    "from": {
-                        "data": 
-                        {
-                            "url": "https://raw.githubusercontent.com/Envy-y/FIT3179-A2/main/FIT3179%20A2%20Repo/A2%20data.csv",
-                            "format": {"type": "csv"}
-                        },
-                        "key": "LGA Name",
-                        "fields": ["EGM per 1000 Adults","LGA Name"]
-                    }
-                    }
-                ],
-                "mark": {"type": "geoshape"},
-                "encoding" :{
-                    "color": {
-                    "field": "EGM per 1000 Adults",
-                    "type": "quantitative"
-                    },
-                "tooltip": [
-                    {"field": "LGA Name","type":"nominal","title":"Local Government"},
-                    {"field": "EGM per 1000 Adults", "type": "quantitative"}
-                ]
+                    "url": "https://raw.githubusercontent.com/Envy-y/FIT3179-A2/main/FIT3179%20A2%20Repo/A2%20data.csv",
+                    "format": {"type": "csv"}
                 },
-                
-                "config": {}
-        };
+                "key": "LGA Name",
+                "fields": ["EGM per 1000 Adults", "LGA Name"]
+                }
+            }
+            ],
+            "mark": {"type": "geoshape"},
+            "encoding": {
+            "color": {"field": "EGM per 1000 Adults", "type": "quantitative"},
+            "tooltip": [
+                {"field": "LGA Name", "type": "nominal", "title": "Local Government"},
+                {"field": "EGM per 1000 Adults", "type": "quantitative"}
+            ]
+            }
+            },
+            {
+            "data": {
+            "url":"https://raw.githubusercontent.com/Envy-y/FIT3179-A2/main/FIT3179%20A2%20Repo/Surrounding.json",
+            "format": {"type": "topojson", "feature": "surrounding"}
+            },
+            "mark": {"type":"geoshape"}
+            }
+            ],
+            "config": {}
+            };
         vegaEmbed('#vis', spec,{mode: 'vega-lite'}).then(console.log).catch(console.warn);
         </script>
     </body>
