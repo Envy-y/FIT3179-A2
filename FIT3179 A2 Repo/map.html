@@ -32,16 +32,16 @@
                     "format": {"type": "csv"}
                 },
                 "key": "LGA Name",
-                "fields": ["EGM per 1000 Adults", "LGA Name"]
+                "fields": ["EXP per adult", "LGA Name"]
                 }
             }
             ],
-            "mark": {"type": "geoshape"},
+            "mark": {"type": "geoshape","stroke":"black"},
             "encoding": {
-            "color": {"field": "EGM per 1000 Adults", "type": "quantitative"},
+            "color": {"field": "EXP per adult", "type": "quantitative"},
             "tooltip": [
                 {"field": "LGA Name", "type": "nominal", "title": "Local Government"},
-                {"field": "EGM per 1000 Adults", "type": "quantitative"}
+                {"field": "EXP per adult", "type": "quantitative","title": "Average Adult Expenditure"}
             ]
             }
             },
@@ -50,8 +50,15 @@
             "url":"https://raw.githubusercontent.com/Envy-y/FIT3179-A2/main/FIT3179%20A2%20Repo/Surrounding.json",
             "format": {"type": "topojson", "feature": "surrounding"}
             },
-            "mark": {"type":"geoshape"}
+            "mark": {"type":"geoshape","fill":"lightgrey","stroke":"black"},
+            "encoding": {
+                "text": {"field": "properties.STATE_NAME", "type": "nominal"},
+                "color": {"value": "black"},
+                "tooltip": [
+                {"field": "properties.STATE_NAME", "type": "nominal", "title": "State"}
+                ]
             }
+            }  
             ],
             "config": {}
             };
