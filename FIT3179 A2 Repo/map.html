@@ -10,9 +10,10 @@
         <script>
             const spec = {
             "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-            "title": "Victorian Council Map",
+            "title": "Average Expenditure on Electronic Gaming Machines per Adult in different Local Government Areas in Victoria",
             "width": 800,
             "height": 400,
+            "background": "lightblue",
             "projection": {"type": "mercator"},
             "layer": [
             {
@@ -38,7 +39,7 @@
             ],
             "mark": {"type": "geoshape","stroke":"black"},
             "encoding": {
-            "color": {"field": "EXP per adult", "type": "quantitative"},
+            "color": {"field": "EXP per adult", "type": "quantitative","title": "Average Adult Expenditure","scale": {"scheme": "yellowgreenblue"}},
             "tooltip": [
                 {"field": "LGA Name", "type": "nominal", "title": "Local Government"},
                 {"field": "EXP per adult", "type": "quantitative","title": "Average Adult Expenditure"}
