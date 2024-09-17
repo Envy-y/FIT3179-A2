@@ -10,9 +10,9 @@
         <script>
             const spec = {
             "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-            "title": "Average Expenditure on Electronic Gaming Machines per Adult in different Local Government Areas in Victoria",
-            "width": 800,
-            "height": 400,
+            "title": "Average Adult Expenditure per Victorian Local Government Area",
+            "width": 700,
+            "height": 500,
             "background": "lightblue",
             "projection": {"type": "mercator"},
             "layer": [
@@ -39,7 +39,7 @@
             ],
             "mark": {"type": "geoshape","stroke":"black"},
             "encoding": {
-            "color": {"field": "EXP per adult", "type": "quantitative","title": "Average Adult Expenditure","scale": {"scheme": "yellowgreenblue"}},
+            "color": {"field": "EXP per adult", "type": "quantitative","title": "Average Adult Expenditure","scale": {"scheme": "lightorange"}},
             "tooltip": [
                 {"field": "LGA Name", "type": "nominal", "title": "Local Government"},
                 {"field": "EXP per adult", "type": "quantitative","title": "Average Adult Expenditure"}
@@ -51,21 +51,22 @@
             "url":"https://raw.githubusercontent.com/Envy-y/FIT3179-A2/main/FIT3179%20A2%20Repo/Surrounding.json",
             "format": {"type": "topojson", "feature": "surrounding"}
             },
-            "layer" : [{
-            "mark": {"type": "text","stroke":"black","dx": 5,"dy": -5},
-            "encoding": {
-                "text": {"field": "properties.STATE_NAME", "type": "nominal"},
-                "longitude": 120,
-                "latitude": -30
-            }
-            },
-            {
             "mark": {"type":"geoshape","fill":"lightgrey","stroke":"black"},
             "encoding": {
                 "tooltip": [{"field": "properties.STATE_NAME", "type": "nominal", "title": "State"}]
             }
+            },
+            {
+            "data": {
+            "url":"https://raw.githubusercontent.com/Envy-y/FIT3179-A2/main/FIT3179%20A2%20Repo/state_loc.json",
+            "format": {"type": "json"}
+            },
+            "mark": {"type":"text"},
+            "encoding": {
+                "text": {"field": "state_code", "type": "nominal","title": "State","fontSize": 7},
+                "longitude": {"field": "lon", "type": "quantitative"},
+                "latitude": {"field": "lat", "type": "quantitative"}
             }
-            ]
             }
             ],
             "config": {}
