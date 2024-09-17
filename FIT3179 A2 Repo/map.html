@@ -51,15 +51,22 @@
             "url":"https://raw.githubusercontent.com/Envy-y/FIT3179-A2/main/FIT3179%20A2%20Repo/Surrounding.json",
             "format": {"type": "topojson", "feature": "surrounding"}
             },
-            "mark": {"type":"geoshape","fill":"lightgrey","stroke":"black"},
+            "layer" : [{
+            "mark": {"type": "text","stroke":"black","dx": 5,"dy": -5},
             "encoding": {
                 "text": {"field": "properties.STATE_NAME", "type": "nominal"},
-                "color": {"value": "black"},
-                "tooltip": [
-                {"field": "properties.STATE_NAME", "type": "nominal", "title": "State"}
-                ]
+                "longitude": 120,
+                "latitude": -30
             }
-            }  
+            },
+            {
+            "mark": {"type":"geoshape","fill":"lightgrey","stroke":"black"},
+            "encoding": {
+                "tooltip": [{"field": "properties.STATE_NAME", "type": "nominal", "title": "State"}]
+            }
+            }
+            ]
+            }
             ],
             "config": {}
             };
