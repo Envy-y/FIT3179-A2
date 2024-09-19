@@ -20,7 +20,7 @@
     "layer": [
     {
     "data": {
-    "url": "https://raw.githubusercontent.com/Envy-y/FIT3179-A2/main/FIT3179%20A2%20Repo/georef-australia-local-government-area%40public.json",
+    "url": "https://raw.githubusercontent.com/Envy-y/FIT3179-A2/main/georef-australia-local-government-area%40public.json",
     "format": {
         "type": "topojson",
         "feature": "georef-australia-local-government-area@public"
@@ -31,7 +31,7 @@
         "lookup": "properties.lga_name",
         "from": {
         "data": {
-            "url": "https://raw.githubusercontent.com/Envy-y/FIT3179-A2/main/FIT3179%20A2%20Repo/A2%20data.csv",
+            "url": "https://raw.githubusercontent.com/Envy-y/FIT3179-A2/main/A2%20data.csv",
             "format": {"type": "csv"}
         },
         "key": "LGA Name",
@@ -50,7 +50,7 @@
     },
     {
     "data": {
-    "url":"https://raw.githubusercontent.com/Envy-y/FIT3179-A2/main/FIT3179%20A2%20Repo/Surrounding.json",
+    "url":"https://raw.githubusercontent.com/Envy-y/FIT3179-A2/main/Surrounding.json",
     "format": {"type": "topojson", "feature": "surrounding"}
     },
     "mark": {"type":"geoshape","fill":"lightgrey","stroke":"black"},
@@ -60,12 +60,12 @@
     },
     {
     "data": {
-    "url":"https://raw.githubusercontent.com/Envy-y/FIT3179-A2/main/FIT3179%20A2%20Repo/state_loc.json",
+    "url":"https://raw.githubusercontent.com/Envy-y/FIT3179-A2/main/state_loc.json",
     "format": {"type": "json"}
     },
     "mark": {"type":"text"},
     "encoding": {
-        "text": {"field": "state_code", "type": "nominal","title": "State","fontSize": 7},
+        "text": {"field": "state_code", "type": "nominal","title": "State"},
         "longitude": {"field": "lon", "type": "quantitative"},
         "latitude": {"field": "lat", "type": "quantitative"}
     }
