@@ -3,7 +3,6 @@
     "title": "Financial Year 2022-2023",
     "width": 600,
     "height": 450,
-    "background": "white",
     "params": [
         {
             "name": "zoom_level",
