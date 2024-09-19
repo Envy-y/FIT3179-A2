@@ -1,10 +1,22 @@
 {
     "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-    "title": "Average Adult Loss on Electric Gaming Machines per Victorian Local Government Area",
-    "width": 700,
-    "height": 500,
-    "background": "lightblue",
-    "projection": {"type": "mercator"},
+    "title": "Financial Year 2022-2023",
+    "width": 600,
+    "height": 450,
+    "background": "white",
+    "params": [
+        {
+            "name": "zoom_level",
+            "value": 5000,
+            "bind": {"input": "range", "min": 3000, "max": 20000, "step": 500}
+
+        },
+        {
+            "name": "center_to",
+            "value": [144.9631, -37.5]
+        }
+    ],
+    "projection": {"type": "mercator", "center": {"expr": "center_to"}, "scale": {"expr": "zoom_level"}},
     "layer": [
     {
     "data": {
@@ -29,7 +41,7 @@
     ],
     "mark": {"type": "geoshape","stroke":"black"},
     "encoding": {
-    "color": {"field": "EXP per adult", "type": "quantitative","title": "Average Adult Loss ($Aud)","scale": {"scheme": "lightorange"}},
+    "color": {"field": "EXP per adult", "type": "quantitative","title": "Average Loss ($Aud)","scale": {"scheme": "lightorange"}},
     "tooltip": [
         {"field": "LGA Name", "type": "nominal", "title": "Local Government"},
         {"field": "EXP per adult", "type": "quantitative","title": "Loss (Aud)","format": "$"}
