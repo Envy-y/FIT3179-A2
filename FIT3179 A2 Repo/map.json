@@ -1,0 +1,63 @@
+{
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+    "title": "Average Adult Loss on Electric Gaming Machines per Victorian Local Government Area",
+    "width": 700,
+    "height": 500,
+    "background": "lightblue",
+    "projection": {"type": "mercator"},
+    "layer": [
+    {
+    "data": {
+    "url": "https://raw.githubusercontent.com/Envy-y/FIT3179-A2/main/FIT3179%20A2%20Repo/georef-australia-local-government-area%40public.json",
+    "format": {
+        "type": "topojson",
+        "feature": "georef-australia-local-government-area@public"
+    }
+    },
+    "transform": [
+    {
+        "lookup": "properties.lga_name",
+        "from": {
+        "data": {
+            "url": "https://raw.githubusercontent.com/Envy-y/FIT3179-A2/main/FIT3179%20A2%20Repo/A2%20data.csv",
+            "format": {"type": "csv"}
+        },
+        "key": "LGA Name",
+        "fields": ["EXP per adult", "LGA Name"]
+        }
+    }
+    ],
+    "mark": {"type": "geoshape","stroke":"black"},
+    "encoding": {
+    "color": {"field": "EXP per adult", "type": "quantitative","title": "Average Adult Loss ($Aud)","scale": {"scheme": "lightorange"}},
+    "tooltip": [
+        {"field": "LGA Name", "type": "nominal", "title": "Local Government"},
+        {"field": "EXP per adult", "type": "quantitative","title": "Loss (Aud)","format": "$"}
+    ]
+    }
+    },
+    {
+    "data": {
+    "url":"https://raw.githubusercontent.com/Envy-y/FIT3179-A2/main/FIT3179%20A2%20Repo/Surrounding.json",
+    "format": {"type": "topojson", "feature": "surrounding"}
+    },
+    "mark": {"type":"geoshape","fill":"lightgrey","stroke":"black"},
+    "encoding": {
+        "tooltip": [{"field": "properties.STATE_NAME", "type": "nominal", "title": "State"}]
+    }
+    },
+    {
+    "data": {
+    "url":"https://raw.githubusercontent.com/Envy-y/FIT3179-A2/main/FIT3179%20A2%20Repo/state_loc.json",
+    "format": {"type": "json"}
+    },
+    "mark": {"type":"text"},
+    "encoding": {
+        "text": {"field": "state_code", "type": "nominal","title": "State","fontSize": 7},
+        "longitude": {"field": "lon", "type": "quantitative"},
+        "latitude": {"field": "lat", "type": "quantitative"}
+    }
+    }
+    ],
+    "config": {}
+}
