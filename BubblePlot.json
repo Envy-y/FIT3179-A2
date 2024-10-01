@@ -1,0 +1,107 @@
+{
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+   "width": 800,
+   "height": 600,
+   "title": "Loss Per Adult vs Unemployment Rate (Jun 2022)",
+   "data": {
+             "url": "https://raw.githubusercontent.com/Envy-y/FIT3179-A2/main/A2%20data.csv",
+             "format": {"type": "csv"}
+         },
+   "params": [
+     {
+       "name": "Reg_Type",
+       "bind": {
+         "input": "select",
+         "options": [
+           null,
+           "Country",
+           "Metro"
+         ],
+         "labels": [
+           "All",
+           "Country",
+           "Metro"
+         ],
+         "name": "Region Type: "
+       }
+     }
+   ],
+   "transform": [
+     {"filter": "datum.LGA != ''"},
+     {"filter": "Reg_Type == null || datum.Region== Reg_Type"},
+     {"calculate": "datum['Unemployment rate Jun 22'] * 100", "as": "UP"}
+   ],
+     "encoding": {
+       "x": {
+         "field": "UP",
+         "type": "quantitative",
+         "title": "Unemployment Rate (%)"
+       },
+       "y": {
+         "field": "EXP per adult",
+         "type": "quantitative",
+         "title": "Loss per adult ($)"
+     }
+    },
+    "layer": [
+     {
+       "mark": "circle",
+       "encoding": {
+          "size": {
+         "field": "Adult 2022",
+         "type": "quantitative",
+         "scale": {
+             "type": "threshold",
+             "domain": [50000, 100000, 150000, 200000],
+             "range": [50, 150, 200, 250, 300]
+           },
+         "legend": {
+           "title": "Population"
+         }
+       },
+       "opacity": {"value": 0.5},
+       "color": {
+         "field": "Region",
+         "type": "nominal",
+         "scale": {
+           "domain": [
+             "Country",
+             "Metro"
+           ],
+           "range": [
+             "#e41a1c",
+             "#377eb8"
+           ]
+         }
+       },
+       "tooltip": [
+         {"field": "LGA Name","type": "nominal"},
+         {"field": "EXP per adult","type": "quantitative","title": "Loss per adult","format": "$"},
+         {"field": "Unemployment rate Jun 22","type": "quantitative","title":"Unemployment Rate","format":".1%"},
+         {"field": "Adult 2022","type": "quantitative","title": "Population"}
+       ]
+     }
+   },
+   {
+       "mark": {
+         "type": "text",
+         "align": "right",
+         "baseline": "middle",
+         "dx": -12,
+         "fontSize": 11.5,
+         "fontStyle": "bold"
+       },
+       "encoding": {
+         "text": {"field": "LGA Name", "type": "nominal"},
+         "color": {"value": "black"},
+         "opacity": {
+           "condition": {
+             "test": "datum['LGA Name'] == 'Melbourne' || datum['LGA Name'] == 'Greater Dandenong' || datum['LGA Name'] == 'Monash' || datum['LGA Name'] == 'Greater Geelong'",
+             "value": 1
+           },
+           "value": 0
+         }
+       }
+   }
+ ]
+ }
