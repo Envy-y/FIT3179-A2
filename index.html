@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -8,16 +8,97 @@
         <script src="https://cdn.jsdelivr.net/npm/vega@5"></script>
         <script src="https://cdn.jsdelivr.net/npm/vega-lite@5"></script>
         <script src="https://cdn.jsdelivr.net/npm/vega-embed@6"></script>
+
+        <style>
+            /* Center-align the title */
+            h1 {
+                text-align: center;
+                margin-top: 20px;
+                font-size: 24px;
+            }
+
+            /* Create a container for the content */
+            .content {
+                display: flex;
+                justify-items: center;
+                margin-inline: 250px;
+                margin-top: 20px;
+                border: solid 1px #000000;
+            }
+
+            /* Style for the left section (chart) */
+            .left {
+                padding: 10px;
+                padding-right: none;
+            }
+
+            /* Style for the right section (text paragraph) */
+            .right {
+                flex: 1;
+                font-size: 14px;
+                line-height: 1.6;
+                padding: 10px;
+                word-wrap: break-word; /* Ensure words break to the next line if too long */
+                max-width: 450px;
+                align-self: flex-start;
+            }
+
+            /* Ensure the chart does not overflow the container */
+            #vis {
+                max-width: 100%;
+                max-height: 100%;
+            }
+
+            /* Small Break */
+            .sb {
+                margin-bottom: 10px;
+            }
+
+            /* Large Break */
+            .lb {
+                margin-bottom: 30px;
+            }
+        </style>
     </head>
     <body>
-        <h1>Average Loss Per Adult on Electric Gaming Machines</h1>
-        <div id="vis"></div>
+        <!-- Centered Title -->
+        <h1>FIT3179 Homework - Interactive Chart</h1>
+
+        <!-- Flexbox Container for Chart and Text -->
+        <div class="content">
+            <!-- Left section for Vega-Lite chart -->
+            <div class="left">
+                <div id="vis"></div>
+            </div>
+
+            <!-- Right section for the text paragraph -->
+            <div class="right">
+                <p>
+                    This parallel coordinate plot compares Population, Workforce, Gambling Loss, and SEIFA Score for different Victorian LGAs.
+                    The graph divides the two types of LGAs, Country and Metro into two different colours, red and blue respectively.  
+                    Overall, it seems that Metro LGAs have higher Population, Workforce, Gambling Loss and SEIFA Score compared to Country LGAs, but that
+                    does not hold true for all. In fact, there is a clear negative correlation between Gambling Loss and SEIFA Score, so some Metro LGAs with high
+                    Gambling Loss end up with lower SEIFA Scores than most Country LGAs.
+                    <br class="lb">
+                    <strong>Key Terms:</strong>
+                    <br class="sb">
+                    <strong>SEIFA Score:</strong> Socio-Economic Indexes for Areas Score, a measure of the relative socio-economic advantage and disadvantage of areas in Australia.
+                    <br class="sb">
+                    <strong>LGA:</strong> Local Government Area, a geographical area that is a division of a local government.
+                    <br class="sb">
+                    <strong>Country:</strong> Rural areas outside of Melbourne.
+                    <br class="sb">
+                    <strong>Metro:</strong> Areas within Melbourne.
+                </p>
+            </div>
+        </div>
+
+        <!-- Vega-Lite Embedding Script -->
         <script type="text/javascript">
-            var map = "./map.vg.json";
+            var map = "./pc.json";
             vegaEmbed('#vis', map).then(function(result) {
                 // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
             }).catch(console.error);
         </script>
     </body>
 </html>
-
