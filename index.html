@@ -18,7 +18,15 @@
             }
 
             /* Create a container for the content */
-            .content {
+            .content1 {
+                display: flex;
+                justify-items: center;
+                margin-inline: 250px;
+                margin-top: 20px;
+                border: solid 1px #000000;
+            }
+
+            .content2 {
                 display: flex;
                 justify-items: center;
                 margin-inline: 250px;
@@ -56,7 +64,7 @@
 
             /* Large Break */
             .lb {
-                margin-bottom: 30px;
+                margin-bottom: 50px;
             }
         </style>
     </head>
@@ -65,10 +73,10 @@
         <h1>FIT3179 Homework - Interactive Chart</h1>
 
         <!-- Flexbox Container for Chart and Text -->
-        <div class="content">
+        <div class="content1">
             <!-- Left section for Vega-Lite chart -->
             <div class="left">
-                <div id="vis"></div>
+                <div id="vis1"></div>
             </div>
 
             <!-- Right section for the text paragraph -->
@@ -93,10 +101,36 @@
             </div>
         </div>
 
+        <div class="content2">
+            <div class="left">
+                <div id="vis2"></div>
+            </div>
+            <div class="right">
+                <p>
+                    This bubble plot shows Unemployment Rate on the x-axis, Loss per Adult on the y-axis, 
+                    and Population as the size of the bubble. Excluding the LGAs with 0 loss (No Gambling Venues),
+                    there is a <strong>clear positive correlation</strong> between Loss per Adult and Unemployment Rate. Additionally, 
+                    despite the data are normalised, we see that LGAs with larger populations still tend to have 
+                    higher Loss per Adult and Unemployment Rate.
+                    <br></br>
+                    Additionally, with the colour channel being used to encode the type of LGA, we can see that 
+                    The loss per Adult is quite similar between Metro and Country LGAs, but Metro LGAs tend to have
+                    higher Unemployment Rates. This is likely due to the fact that Metro LGAs have higher populations
+                    and less job opportunities compared to Country LGAs.
+                </p>
+        </div>
+
         <!-- Vega-Lite Embedding Script -->
         <script type="text/javascript">
-            var map = "./pc.json";
-            vegaEmbed('#vis', map).then(function(result) {
+            var pc = "./pc.json";
+            vegaEmbed('#vis1', pc).then(function(result) {
+                // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
+            }).catch(console.error);
+        </script>
+
+        <script>
+            var bb = "./BubblePlot.json";
+            vegaEmbed('#vis2', bb).then(function(result) {
                 // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
             }).catch(console.error);
         </script>
