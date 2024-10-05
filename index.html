@@ -17,22 +17,17 @@
                 font-size: 24px;
             }
 
-            /* Create a container for the content */
-            .content1 {
+            .content1, .content2 {
                 display: flex;
-                justify-items: center;
-                margin-inline: 250px;
+                justify-content: center; /* Horizontally center the content */
+                align-items: center; /* Vertically center the content */
                 margin-top: 20px;
                 border: solid 1px #000000;
-            }
+                max-width: 1200px;
+                margin-left: auto;
+                margin-right: auto; /* Ensure container is centered on the page */
+}
 
-            .content2 {
-                display: flex;
-                justify-items: center;
-                margin-inline: 250px;
-                margin-top: 20px;
-                border: solid 1px #000000;
-            }
 
             /* Style for the left section (chart) */
             .left {
