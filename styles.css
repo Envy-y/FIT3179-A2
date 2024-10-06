@@ -13,22 +13,28 @@ body {
 
 .container {
   display: grid;
-  grid-template-rows: auto 1fr auto; /* Header, main content, footer */
+  grid-template-rows: auto 1fr auto; 
   grid-gap: 20px;
   padding: 20px;
-  min-height: 100vh; /* Full viewport height */
+  min-height: 100vh;
+  margin-left: 6%;
+  margin-right: 6%;
 }
 
 /* Header Styling */
 .header {
   display: grid;
-  grid-template-columns: 1fr 0.5fr 1fr; 
+  grid-template-columns: 1fr 1fr; 
   align-items: top;
-  padding: 20px;
+  padding: 30px;
   background: transparent;
   color: #ffffff;
-  max-height: 500px;
   margin-bottom: 30px;
+}
+
+.below_title {
+  margin-top: 20px;
+  background: transparent;
 }
 
 .main-title {
@@ -48,29 +54,36 @@ body {
 }
 
 .description {
-  font-size: 1.5rem;
+  font-size: 1.4rem;
   margin-top: 10px;
   color: #ffffff; 
   text-shadow: 0px 0px 2px rgba(0, 255, 170, 0.7); /* Glowing effect */
-  max-width: 800px;
+  max-width: 1000px;
   align-self: center;
   position: relative;
+  margin-bottom: 50px;
 }
-
+.glossary {
+  border-right: 3px solid white;
+  height: auto;
+  margin-left: 4%
+}
 .glossary_title {
   font-size: 3rem;
   font-weight: bold;
   color: #ffffff; /* Neon green color */
   text-shadow: 0px 0px 5px rgba(0, 255, 170, 0.7); /* Glowing effect */
+  text-align: left;
 }
 .glossary_text {
   font-size: 1.5rem;
   margin-top: 10px;
   color: #ffffff; 
   text-shadow: 0px 0px 2px rgba(0, 255, 170, 0.7); /* Glowing effect */
-  max-width: 800px;
   align-self: top;
   position: relative;
+  text-align: left;
+
 }
 
 li {
@@ -78,37 +91,87 @@ li {
 }
 
 .map-container {
-  text-align: center;
+  margin-top: relative;
+  text-align: left;
   font-size: 1.5rem;
   font-weight: bold;
   color: #ffffff;
   text-shadow: 0px 0px 5px rgba(0, 255, 170, 0.7);
+  margin-left: 10%;
 }
 
 .map-container canvas {
   width: 100%; 
-  max-width: 800px; 
-  max-height: 400px;
+  max-width: 100%; 
+  max-height: 100%;
 }
 
-/* Main Content Layout */
-.main-content {
+.slot-machine {
+  float: left;
+  width: 252px;
+  background: transparent;
+  border: 5px solid #00FFAA;
+  color: #00FFAA; 
+  text-shadow: 0px 0px 10px rgba(0, 255, 170, 0.7); 
+  border-radius: 10px;
+  padding: 10px;
+  margin-right: 20px;
+}
+
+.reel {
+  width: 70px;
+  height: 150px;
+  border: 2px solid #00FFAA;
+  border-radius: 5px;
+  margin: 0 2px;
+  background: transparent;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  float: left;
+}
+
+.symbol {
+  font-size: 50px;
+}
+
+/* Section 2 */
+.sect2 {
   display: grid;
-  grid-template-columns: repeat(2, 1fr); /* Two columns for sections */
-  grid-gap: 20px;
+  grid-template-columns: 1fr 1fr; 
+  align-items: top;
+  padding: 20px;
+  background: transparent;
+  color: #ffffff;
+  margin-bottom: 30px;
 }
 
-.section {
-  background-color: transparent;
-  border-radius: 8px;
-  padding: 20px;
+.data_description {
+  margin-top: 20px;
+  text-align: left;
 }
+.title {
+  font-size: 2rem; /* Large font size for emphasis */
+  font-weight: bold;
+  line-height: 1.2;
+  color: #ffffff; /* Neon green color to make the title pop */
+  text-shadow: 0px 0px 5px rgba(0, 255, 170, 0.7); /* Glowing effect */
+  margin-bottom: 10px;
+  text-align: left;
+}
+
 
 /* Footer Styling */
 .footer {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
   background-color: #111;
   color: white;
   text-align: center;
   padding: 20px;
 }
 
+.extras {
+  margin-left: 3%;
+}

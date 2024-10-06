@@ -11,64 +11,132 @@
 </head>
 <body>
   <div class="container">
-    <!-- Header Section with title on the left and chart on the right -->
     <header class="header">
-      <div>
-        <h1 class="main-title">Wagering Woes</h1>
-        <h2 class="sub-title">A Data Dive into EGM Loss and Socioeconomic Impact</h2>
-        <p class = "description"> This visualisation poster aims to explore and highlight the economic and social impacts 
-          of losses from electronic gaming machines (EGMs) across all Victorian Local Government Areas (LGAs). 
-          By integrating data such as total losses, SEIFA scores, unemployment rates, and the number of EGMs per 1000 people, 
-          the poster provide insights into how gambling activities (notably loss from EMGs) are distributed across different LGAs, and
-          their subsequent socialeconomic impacts. The visualisations in the poster seek to uncover patterns that can inform policy discussions 
-          and targeted interventions to mitigate the negative effects of EGMs on vulnerable communities.
-          <br><br>
-          Note: All data is for the financial year <strong>2021-2022</strong>
-        </p>
-      </div>
-      <div>
-        <h1 class = "glossary_title"><strong>Glossary</strong></h1>
-        <ul class = "glossary_text">
-          <li><strong>LGA:</strong> Local Government Area, a geographical area that is a division of a local government.</li>
-          <li><strong>SEIFA Score:</strong> Socio-Economic Indexes for Areas Score, a measure of the relative socio-economic advantage and disadvantage of areas in Australia.</li>
-          <li><strong>Country:</strong> Rural areas outside of Melbourne.</li>
-          <li><strong>Metro:</strong> Metropolitan Areas within Melbourne.</li>
-          <li><strong>EGM:</strong> Electronic Gaming Machines</li>
-        </ul>
+        <div>
+          <h1 class="main-title">Wagering Woes</h1>
+          <h2 class="sub-title">A Data Dive into EGM Loss and Socioeconomic Impact</h2>
+          <br>
+          <div class="below_title">
+            <hr style="max-width: 95%;">
+            <br>
+            <div class="slot-machine">
+              <div class="reel">
+                  <div class="symbol">-</div>
+                  <div class="symbol">7</div>
+                  <div class="symbol">-</div>
+              </div>
+              <div class="reel">
+                  <div class="symbol">-</div>
+                  <div class="symbol">7</div>
+                  <div class="symbol">-</div>
+              </div>
+              <div class="reel">
+                  <div class="symbol">-</div>
+                  <div class="symbol">7</div>
+                  <div class="symbol">-</div>
+              </div>
+            </div>
+            <p class = "description"> This visualisation poster aims to explore and highlight the economic and social impacts 
+              of losses from electronic gaming machines (EGMs) across all Victorian Local Government Areas (LGAs). 
+              By integrating data such as total losses, SEIFA scores, unemployment rates, and the number of EGMs per 1000 people, 
+              the poster provide insights into how gambling activities (notably loss from EGMs) are distributed across different LGAs, and
+              their subsequent socialeconomic impacts. The visualisations in the poster seek to uncover patterns that can inform policy discussions 
+              and targeted interventions to mitigate the negative effects of EGMs on vulnerable communities.
+              <br><br>
+              Note: All data is for the financial year <strong>2021-2022</strong>
+            </p>
+          </div>
       </div>
       <div class="map-container">
-        <p>Average Loss Per Adult Across LGAs</p>
+        <h2>Average Loss Per Adult Across LGAs</h2>
         <div id="map1"></div>
       </div>
     </header>
 
-    <!-- Main Content Section -->
-    <main class="main-content">
-      <section class="section" id="section1">
-        <h2>Section 1</h2>
-        <div>
-          <div id="bbp">
-        </div>
-      </section>
-
-      <section class="section" id="section2">
-        <h2>Section 2</h2>
-      </section>
-
-      <section class="section" id="section3">
-        <h2>Section 3</h2>
-        <div>
-          <div id="pcp">
-      </section>
-
-      <section class="section" id="section4">
-        <h2>Section 4</h2>
-      </section>
+    <!-- Section 2-->
+    <main class="sect2">
+      <div >
+        <h2 class="title">Population, Workforce, Gambling Loss and SEIFA Score</h2>
+          <div id="pcp"></div>
+          <div class = "data_description">
+            <div class="slot-machine">
+              <div class="reel">
+                  <div class="symbol">-</div>
+                  <div class="symbol">?</div>
+                  <div class="symbol">-</div>
+              </div>
+              <div class="reel">
+                  <div class="symbol">-</div>
+                  <div class="symbol">?</div>
+                  <div class="symbol">-</div>
+              </div>
+              <div class="reel">
+                  <div class="symbol">-</div>
+                  <div class="symbol">?</div>
+                  <div class="symbol">-</div>
+              </div>
+            </div>
+            <p class = "description">This parallel coordinate plot compares Population, Workforce, Gambling Loss, and SEIFA Score for different Victorian LGAs.
+              The graph divides the two types of LGAs, Country and Metro into two different colours, red and blue respectively.  
+              Overall, it seems that Metro LGAs have higher Population, Workforce, Gambling Loss and SEIFA Score compared to Country LGAs, but that
+              does not hold true for all. In fact, there is a clear negative correlation between Gambling Loss and SEIFA Score, so some Metro LGAs with high
+              Gambling Loss end up with lower SEIFA Scores than most Country LGAs.</p>
+          </div>
+      </div>
+      <div>
+        <h2 class="title">Loss per Adult vs Unemployment Rate</h2>
+          <div id="bbp"></div>
+          <div class = "data_description">
+            <div class="slot-machine">
+              <div class="reel">
+                  <div class="symbol">-</div>
+                  <div class="symbol">!</div>
+                  <div class="symbol">-</div>
+              </div>
+              <div class="reel">
+                  <div class="symbol">-</div>
+                  <div class="symbol">!</div>
+                  <div class="symbol">-</div>
+              </div>
+              <div class="reel">
+                  <div class="symbol">-</div>
+                  <div class="symbol">!</div>
+                  <div class="symbol">-</div>
+              </div>
+            </div>
+            <p class = "description">This bubble plot shows Unemployment Rate on the x-axis, Loss per Adult on the y-axis, 
+              and Population as the size of the bubble. Excluding the LGAs with 0 loss (No Gambling Venues),
+              there is a <strong>clear positive correlation</strong> between Loss per Adult and Unemployment Rate. Additionally, 
+              despite the data are normalised, we see that LGAs with larger populations still tend to have 
+              higher Loss per Adult and Unemployment Rate.
+              <br><br>
+              Additionally, with the colour channel being used to encode the type of LGA, we can see that 
+              The loss per Adult is quite similar between Metro and Country LGAs, but Metro LGAs tend to have
+              higher Unemployment Rates. This is likely due to the fact that Metro LGAs have higher populations
+              and less job opportunities compared to Country LGAs.</p>
+      </div>
     </main>
-
+    
     <!-- Footer Section -->
     <footer class="footer">
-      <p>Data Retreived from: https://www.vgccc.vic.gov.au/resources/information-and-data/expenditure-data</p>
+      <div class = "glossary">
+        <h3 class = "glossary_title"><strong>Glossary</strong></h3>
+          <ul class = "glossary_text">
+            <li><strong>LGA:</strong> Local Government Area, a geographical area that is a division of a local government.</li>
+            <li><strong>SEIFA Score:</strong> Socio-Economic Indexes for Areas Score, a measure of the relative socio-economic advantage and disadvantage of areas in Australia.</li>
+            <li><strong>Country:</strong> Rural areas outside of Melbourne.</li>
+            <li><strong>Metro:</strong> Metropolitan Areas within Melbourne.</li>
+            <li><strong>EGM:</strong> Electronic Gaming Machines</li>
+          </ul>
+        </div>
+      <div class = "extras">
+        <h3 class = "glossary_title"><strong>Additional Information</strong></h3>
+        <ul class = "glossary_text">
+          <li>Data was sourced from the Victorian Commission for Gambling and Liquor Regulation (VCGLR)</li>
+          <li>Link: <a href="https://www.vgccc.vic.gov.au/resources/information-and-data/expenditure-data">https://www.vgccc.vic.gov.au/resources/information-and-data/expenditure-data</a></li>
+          <li>Created by: Guoyang Zheng</li>
+          <li>Student ID: 33116156</li>
+      </div>
     </footer>
   </div>
     <!-- Vega-Lite Embedding Script -->
@@ -79,13 +147,13 @@
       }).catch(console.error);
     </script>
     <script>
-      var pc = "./BubblePlot.json";
+      var pc = "./bbp1.json";
       vegaEmbed('#bbp', pc).then(function(result) {
           // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
       }).catch(console.error);
     </script>
     <script>
-      var pc = "./pc.json";
+      var pc = "./pc1.json";
       vegaEmbed('#pcp', pc).then(function(result) {
           // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
       }).catch(console.error);
