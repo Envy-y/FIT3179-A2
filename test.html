@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://cdn.jsdelivr.net/npm/vega@5"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vega-lite@5"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vega-embed@6"></script>
+  <title>FIT3179 Data Viz 2</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="container">
+    <!-- Header Section with title on the left and chart on the right -->
+    <header class="header">
+      <div>
+        <h1 class="main-title">Wagering Woes</h1>
+        <h2 class="sub-title">A Data Dive into EGM Loss and Socioeconomic Impact</h2>
+        <p class = "description"> This visualisation poster aims to explore and highlight the economic and social impacts 
+          of losses from electronic gaming machines (EGMs) across all Victorian Local Government Areas (LGAs). 
+          By integrating data such as total losses, SEIFA scores, unemployment rates, and the number of EGMs per 1000 people, 
+          the poster provide insights into how gambling activities (notably loss from EMGs) are distributed across different LGAs, and
+          their subsequent socialeconomic impacts. The visualisations in the poster seek to uncover patterns that can inform policy discussions 
+          and targeted interventions to mitigate the negative effects of EGMs on vulnerable communities.
+          <br><br>
+          Note: All data is for the financial year <strong>2021-2022</strong>
+        </p>
+      </div>
+      <div>
+        <h1 class = "glossary_title"><strong>Glossary</strong></h1>
+        <ul class = "glossary_text">
+          <li><strong>LGA:</strong> Local Government Area, a geographical area that is a division of a local government.</li>
+          <li><strong>SEIFA Score:</strong> Socio-Economic Indexes for Areas Score, a measure of the relative socio-economic advantage and disadvantage of areas in Australia.</li>
+          <li><strong>Country:</strong> Rural areas outside of Melbourne.</li>
+          <li><strong>Metro:</strong> Metropolitan Areas within Melbourne.</li>
+          <li><strong>EGM:</strong> Electronic Gaming Machines</li>
+        </ul>
+      </div>
+      <div class="map-container">
+        <p>Average Loss Per Adult Across LGAs</p>
+        <div id="map1"></div>
+      </div>
+    </header>
+
+    <!-- Main Content Section -->
+    <main class="main-content">
+      <section class="section" id="section1">
+        <h2>Section 1</h2>
+        <div>
+          <div id="bbp">
+        </div>
+      </section>
+
+      <section class="section" id="section2">
+        <h2>Section 2</h2>
+      </section>
+
+      <section class="section" id="section3">
+        <h2>Section 3</h2>
+        <div>
+          <div id="pcp">
+      </section>
+
+      <section class="section" id="section4">
+        <h2>Section 4</h2>
+      </section>
+    </main>
+
+    <!-- Footer Section -->
+    <footer class="footer">
+      <p>Data Retreived from: https://www.vgccc.vic.gov.au/resources/information-and-data/expenditure-data</p>
+    </footer>
+  </div>
+    <!-- Vega-Lite Embedding Script -->
+    <script type="text/javascript">
+      var map = "./map.vg.json";
+      vegaEmbed('#map1', map).then(function(result) {
+          // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
+      }).catch(console.error);
+    </script>
+    <script>
+      var pc = "./BubblePlot.json";
+      vegaEmbed('#bbp', pc).then(function(result) {
+          // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
+      }).catch(console.error);
+    </script>
+    <script>
+      var pc = "./pc.json";
+      vegaEmbed('#pcp', pc).then(function(result) {
+          // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
+      }).catch(console.error);
+    </script>
+</body>
+</html>

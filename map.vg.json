@@ -1,11 +1,11 @@
 {
     "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-    "title": "Financial Year 2022-2023",
     "width": 600,
     "height": 450,
+    "background": null,
     "params": [
         {
-            "name": "zoom_level",
+            "name": "Zoom Level ",
             "value": 5000,
             "bind": {"input": "range", "min": 3000, "max": 20000, "step": 500}
 
@@ -13,9 +13,31 @@
         {
             "name": "center_to",
             "value": [144.9631, -37.5]
+        },
+        {
+          "name": "loss_filter",
+          "bind": {
+            "input": "select",
+            "options": [
+              null,
+              "Low ($1-200)",
+              "Medium ($200-400)",
+              "High ($400-600)",
+              "Very High ($600+)"
+            ],
+            "labels": [
+              "Show all",
+              "Low ($1-200)",
+              "Medium ($200-400)",
+              "High ($400-600)",
+              "Very High ($600+)"
+            ],
+            "name": "Loss Categlory "
+          }
+
         }
     ],
-    "projection": {"type": "mercator", "center": {"expr": "center_to"}, "scale": {"expr": "zoom_level"}},
+    "projection": {"type": "mercator", "center": {"expr": "center_to"}, "scale": {"expr": "Zoom Level "}},
     "layer": [
     {
     "data": {
@@ -38,9 +60,50 @@
         }
     }
     ],
-    "mark": {"type": "geoshape","stroke":"black"},
+    "mark": {"type": "geoshape","stroke":"white"},
     "encoding": {
-    "color": {"field": "EXP per adult", "type": "quantitative","title": "Average Loss ($Aud)","scale": {"scheme": "lightorange"}},
+    "opacity": {"value":0.1},
+    "tooltip": [
+        {"field": "LGA Name", "type": "nominal", "title": "Local Government"},
+        {"field": "EXP per adult", "type": "quantitative","title": "Loss (Aud)","format": "$"}
+    ]
+    }
+    },
+    {
+    "data": {
+    "url": "https://raw.githubusercontent.com/Envy-y/FIT3179-A2/main/georef-australia-local-government-area%40public.json",
+    "format": {
+        "type": "topojson",
+        "feature": "georef-australia-local-government-area@public"
+    }
+    },
+    "transform": [
+      {
+        "lookup": "properties.lga_name",
+        "from": {
+        "data": {
+            "url": "https://raw.githubusercontent.com/Envy-y/FIT3179-A2/main/A2%20data.csv",
+            "format": {"type": "csv"}
+        },
+        "key": "LGA Name",
+        "fields": ["EXP per adult", "LGA Name"]
+        }
+    },
+      {
+            "calculate": "parseInt(datum['EXP per adult'])", "as": "EXP"
+        },
+       {
+      "calculate": "datum['EXP'] < 200 ? 'Low ($1-200)' : datum['EXP']  < 400 ? 'Medium ($200-400)' : datum['EXP']  < 600 ? 'High ($400-600)' : datum['EXP'] > 600 ? 'Very High ($600+)' : 'No Loss'",
+      "as": "exp_cat"
+    },
+    {"filter": "loss_filter == null || datum['exp_cat'] == loss_filter & datum['EXP'] > 0"}
+    ],
+    "mark": {"type": "geoshape","stroke":"white"},
+    "encoding": {
+    "color": {"field": "exp_cat", "type": "nominal","title": "Average Loss ($Aud)","scale": {"scheme": "teals"},
+        "legend": {"labelColor": "#F0F0F0","titleColor": "#F0F0F0"},
+        "sort": ["No Loss","Low ($1-200)", "Medium ($200-400)", "High ($400-600)", "Very High ($600+)"]},
+    "opacity": {"value":1},
     "tooltip": [
         {"field": "LGA Name", "type": "nominal", "title": "Local Government"},
         {"field": "EXP per adult", "type": "quantitative","title": "Loss (Aud)","format": "$"}
@@ -52,7 +115,7 @@
     "url":"https://raw.githubusercontent.com/Envy-y/FIT3179-A2/main/Surrounding.json",
     "format": {"type": "topojson", "feature": "surrounding"}
     },
-    "mark": {"type":"geoshape","fill":"lightgrey","stroke":"black"},
+    "mark": {"type":"geoshape","fill":"#F0F0F0","stroke":"black"},
     "encoding": {
         "tooltip": [{"field": "properties.STATE_NAME", "type": "nominal", "title": "State"}]
     }
@@ -70,5 +133,9 @@
     }
     }
     ],
-    "config": {}
+
+
+
+    
+    "config": {"view": {"stroke": "transparent"}}
 }

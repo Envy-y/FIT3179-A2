@@ -3,6 +3,7 @@
    "width": 510,
    "height": 400,
    "title": "Loss Per Adult vs Unemployment Rate (Jun 2022)",
+    "background": null,
    "data": {
              "url": "https://raw.githubusercontent.com/Envy-y/FIT3179-A2/main/A2%20data.csv",
              "format": {"type": "csv"}

@@ -4,6 +4,7 @@
         "url": "https://raw.githubusercontent.com/Envy-y/FIT3179-A2/main/A2%20data.csv",
         "format": {"type": "csv"}
     },
+    "background": null,
     "title": {
         "text": "Population, Workforce, Gambling Loss and SEIFA Score of LGAs",
         "fontSize": 16
