@@ -14,10 +14,10 @@
     <header class="header">
         <div>
           <h1 class="main-title">Wagering Woes</h1>
-          <h2 class="sub-title">A Data Dive into EGM Loss and Socioeconomic Impact</h2>
+          <h2 class="sub-title">A Data Dive into EGM Loss and its Socioeconomic Impact</h2>
           <br>
           <div class="below_title">
-            <hr style="max-width: 95%;">
+            <hr style="max-width: 90%;">
             <br>
             <div class="slot-machine">
               <div class="reel">
@@ -36,6 +36,7 @@
                   <div class="symbol">-</div>
               </div>
             </div>
+            <h2 class = "sub-title">About the Dataset</h2>
             <p class = "description"> This visualisation poster aims to explore and highlight the economic and social impacts 
               of losses from electronic gaming machines (EGMs) across all Victorian Local Government Areas (LGAs). 
               By integrating data such as total losses, SEIFA scores, unemployment rates, and the number of EGMs per 1000 people, 
@@ -51,31 +52,16 @@
         <h2>Average Loss Per Adult Across LGAs</h2>
         <div id="map1"></div>
       </div>
+      <hr>
+      <hr>
     </header>
 
     <!-- Section 2-->
     <main class="sect2">
       <div >
-        <h2 class="title">Population, Workforce, Gambling Loss and SEIFA Score</h2>
+        <h2 class="title">Population, Workforce, Loss and SEIFA Score</h2>
           <div id="pcp"></div>
           <div class = "data_description">
-            <div class="slot-machine">
-              <div class="reel">
-                  <div class="symbol">-</div>
-                  <div class="symbol">?</div>
-                  <div class="symbol">-</div>
-              </div>
-              <div class="reel">
-                  <div class="symbol">-</div>
-                  <div class="symbol">?</div>
-                  <div class="symbol">-</div>
-              </div>
-              <div class="reel">
-                  <div class="symbol">-</div>
-                  <div class="symbol">?</div>
-                  <div class="symbol">-</div>
-              </div>
-            </div>
             <p class = "description">This parallel coordinate plot compares Population, Workforce, Gambling Loss, and SEIFA Score for different Victorian LGAs.
               The graph divides the two types of LGAs, Country and Metro into two different colours, red and blue respectively.  
               Overall, it seems that Metro LGAs have higher Population, Workforce, Gambling Loss and SEIFA Score compared to Country LGAs, but that
@@ -83,27 +69,10 @@
               Gambling Loss end up with lower SEIFA Scores than most Country LGAs.</p>
           </div>
       </div>
-      <div>
+      <div class = "right">
         <h2 class="title">Loss per Adult vs Unemployment Rate</h2>
           <div id="bbp"></div>
           <div class = "data_description">
-            <div class="slot-machine">
-              <div class="reel">
-                  <div class="symbol">-</div>
-                  <div class="symbol">!</div>
-                  <div class="symbol">-</div>
-              </div>
-              <div class="reel">
-                  <div class="symbol">-</div>
-                  <div class="symbol">!</div>
-                  <div class="symbol">-</div>
-              </div>
-              <div class="reel">
-                  <div class="symbol">-</div>
-                  <div class="symbol">!</div>
-                  <div class="symbol">-</div>
-              </div>
-            </div>
             <p class = "description">This bubble plot shows Unemployment Rate on the x-axis, Loss per Adult on the y-axis, 
               and Population as the size of the bubble. Excluding the LGAs with 0 loss (No Gambling Venues),
               there is a <strong>clear positive correlation</strong> between Loss per Adult and Unemployment Rate. Additionally, 

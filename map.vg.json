@@ -101,7 +101,7 @@
     "mark": {"type": "geoshape","stroke":"white"},
     "encoding": {
     "color": {"field": "exp_cat", "type": "nominal","title": "Average Loss ($Aud)","scale": {"scheme": "teals"},
-        "legend": {"labelColor": "#F0F0F0","titleColor": "#F0F0F0"},
+        "legend": {"labelColor": "#F0F0F0","titleColor": "#F0F0F0","labelFontSize": 16, "titleFontSize": 16, "title": "Loss Category"},
         "sort": ["No Loss","Low ($1-200)", "Medium ($200-400)", "High ($400-600)", "Very High ($600+)"]},
     "opacity": {"value":1},
     "tooltip": [

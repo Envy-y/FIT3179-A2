@@ -6,7 +6,7 @@
 
 body {
   font-family: Arial, sans-serif;
-  background: linear-gradient(to bottom, #1b1d33, #000000);
+  background: linear-gradient(to bottom, #000000, #000000);
   color: #ffffff;
   min-height: 100vh;
 }
@@ -54,11 +54,11 @@ body {
 }
 
 .description {
-  font-size: 1.4rem;
+  font-size: 1.5rem;
   margin-top: 10px;
   color: #ffffff; 
   text-shadow: 0px 0px 2px rgba(0, 255, 170, 0.7); /* Glowing effect */
-  max-width: 1000px;
+  max-width: 900px;
   align-self: center;
   position: relative;
   margin-bottom: 50px;
@@ -66,7 +66,8 @@ body {
 .glossary {
   border-right: 3px solid white;
   height: auto;
-  margin-left: 4%
+  margin-left: 2%;
+  margin-right: 2%;
 }
 .glossary_title {
   font-size: 3rem;
@@ -90,8 +91,11 @@ li {
   line-height: 1.5;
 }
 
+hr {
+  margin-top: 3%;
+}
 .map-container {
-  margin-top: relative;
+  margin-top: 10%;
   text-align: left;
   font-size: 1.5rem;
   font-weight: bold;
@@ -108,19 +112,20 @@ li {
 
 .slot-machine {
   float: left;
-  width: 252px;
+  width: 342px;
   background: transparent;
   border: 5px solid #00FFAA;
   color: #00FFAA; 
   text-shadow: 0px 0px 10px rgba(0, 255, 170, 0.7); 
   border-radius: 10px;
   padding: 10px;
-  margin-right: 20px;
+  margin: 0 15px;
+  margin-left: 0px;
 }
 
 .reel {
-  width: 70px;
-  height: 150px;
+  width: 100px;
+  height: 200px;
   border: 2px solid #00FFAA;
   border-radius: 5px;
   margin: 0 2px;
@@ -133,7 +138,8 @@ li {
 }
 
 .symbol {
-  font-size: 50px;
+  font-size: 60px;
+  font-weight: bold;
 }
 
 /* Section 2 */
@@ -161,6 +167,10 @@ li {
   text-align: left;
 }
 
+.right {
+  margin-left: 10%;
+}
+
 
 /* Footer Styling */
 .footer {
@@ -174,4 +184,5 @@ li {
 
 .extras {
   margin-left: 3%;
+  margin-right: 3%;
 }

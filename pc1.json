@@ -5,6 +5,8 @@
         "format": {"type": "csv"}
     },
     "background": null,
+    "width": 600,
+    "height": 422,
     "params": [
      {
        "name": "Reg_Type",
@@ -60,15 +62,14 @@
             "as": "mid"
         }
     ],
-    "width": 600,
-    "height": 400,
     "layer": [
         {
             "mark": {
-                "type": "rule"
+                "type": "rule",
+                "color": "white"
             },
             "encoding": {
-                "x": {"field": "key","sort": ["Population","Workforce", "Loss", "SEIFA Score"]},
+                "x": {"field": "key","sort": ["Population","Workforce", "Loss", "SEIFA Score"],"axis": {"labelColor": "white","labelFontSize": 16}},
                 "detail": {"aggregate": "count"}
        }
     },
@@ -87,10 +88,11 @@
                     "#e41a1c",
                     "#377eb8"
                 ]
-                }
+                },
+                "legend": {"labelColor": "white","labelFontSize": 16,"titleColor": "white","titleFontSize": 16}
             },
             "detail": {"type": "nominal", "field": "index"},
-            "opacity": {"value": 0.3},
+            "opacity": {"value": 0.75},
             "x": {"type": "nominal", "field": "key","sort": ["Population","Workforce", "Loss", "SEIFA Score"]},
             "y": {"type": "quantitative", "field": "norm_val", "axis": null},
             "tooltip": [{
@@ -115,7 +117,7 @@
       "y": {"value": 0}
     },
     "layer": [{
-      "mark": {"type": "text", "style": "label"},
+      "mark": {"type": "text", "style": "label","color": "white"},
       "encoding": {
         "text": {"aggregate": "max", "field": "max"}
       }
@@ -126,7 +128,7 @@
       "y": {"value": 200}
     },
     "layer": [{
-      "mark": {"type": "text", "style": "label"},
+      "mark": {"type": "text", "style": "label","color": "white"},
       "encoding": {
         "text": {"aggregate": "min", "field": "mid"}
       }
@@ -138,7 +140,7 @@
       "y": {"value": 400}
     },
     "layer": [{
-      "mark": {"type": "text", "style": "label"},
+      "mark": {"type": "text", "style": "label","color": "white"},
       "encoding": {
         "text": {"aggregate": "min", "field": "min"}
       }
@@ -146,7 +148,7 @@
   }
   ],
     "config": {
-    "axisX": {"domain": false, "labelAngle": 0, "title": null,"domainColor": "black", "tickColor": "black"},
+    "axisX": {"domain": false, "labelAngle": 0, "title": null,"domainColor": "white", "tickColor": "white"},
     "view": {"stroke": null},
     "style": {
       "label": {"baseline": "middle", "align": "right", "dx": -5},
