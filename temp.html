@@ -98,20 +98,34 @@
             <li><strong>EGM:</strong> Electronic Gaming Machines</li>
           </ul>
         </div>
-
-        <!-- Vega-Lite Embedding Script -->
-        <script type="text/javascript">
-            var pc = "./pc.json";
-            vegaEmbed('#vis1', pc).then(function(result) {
-                // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
-            }).catch(console.error);
-        </script>
-
-        <script>
-            var bb = "./BubblePlot.json";
-            vegaEmbed('#vis2', bb).then(function(result) {
-                // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
-            }).catch(console.error);
-        </script>
-    </body>
+      <div class = "extras">
+        <h3 class = "glossary_title"><strong>Additional Information</strong></h3>
+        <ul class = "glossary_text">
+          <li>Data was sourced from the Victorian Commission for Gambling and Liquor Regulation (VCGLR)</li>
+          <li>Link: <a href="https://www.vgccc.vic.gov.au/resources/information-and-data/expenditure-data">https://www.vgccc.vic.gov.au/resources/information-and-data/expenditure-data</a></li>
+          <li>Created by: Guoyang Zheng</li>
+          <li>Student ID: 33116156</li>
+      </div>
+    </footer>
+  </div>
+    <!-- Vega-Lite Embedding Script -->
+    <script type="text/javascript">
+      var map = "./map.vg.json";
+      vegaEmbed('#map1', map, {"actions": false}).then(function(result) {
+          // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
+      }).catch(console.error);
+    </script>
+    <script>
+      var pc = "./bbp1.json";
+      vegaEmbed('#bbp', pc, {"actions": false}).then(function(result) {
+          // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
+      }).catch(console.error);
+    </script>
+    <script>
+      var pc = "./pc1.json";
+      vegaEmbed('#pcp', pc, {"actions": false}).then(function(result) {
+          // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
+      }).catch(console.error);
+    </script>
+</body>
 </html>
