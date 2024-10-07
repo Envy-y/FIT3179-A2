@@ -54,7 +54,7 @@ body {
 }
 
 .description {
-  font-size: 1.5rem;
+  font-size: 1.3rem;
   margin-top: 10px;
   color: #ffffff; 
   text-shadow: 0px 0px 2px rgba(0, 255, 170, 0.7); /* Glowing effect */
@@ -99,15 +99,14 @@ hr {
   text-align: left;
   font-size: 1.5rem;
   font-weight: bold;
-  color: #ffffff;
   text-shadow: 0px 0px 5px rgba(0, 255, 170, 0.7);
   margin-left: 10%;
 }
 
 .map-container canvas {
-  width: 100%; 
-  max-width: 100%; 
-  max-height: 100%;
+  width: 100%;
+  height: 100%;
+  margin-top: 10px;
 }
 
 .slot-machine {
@@ -142,6 +141,11 @@ hr {
   font-weight: bold;
 }
 
+.ssymbol {
+  font-size: 40px;
+  font-weight: bold;
+}
+
 /* Section 2 */
 .sect2 {
   display: grid;
@@ -149,7 +153,6 @@ hr {
   align-items: top;
   padding: 20px;
   background: transparent;
-  color: #ffffff;
   margin-bottom: 30px;
 }
 
@@ -165,12 +168,33 @@ hr {
   text-shadow: 0px 0px 5px rgba(0, 255, 170, 0.7); /* Glowing effect */
   margin-bottom: 10px;
   text-align: left;
+  justify-content: center;
+}
+
+.normal_title {
+  font-size: 2rem;
+  font-weight: bold;
+  text-shadow: 0px 0px 5px rgba(0, 255, 170, 0.7);
+  padding: 5px;
+  margin: 5px;
 }
 
 .right {
   margin-left: 10%;
 }
 
+.sect3 {
+  display: grid;
+  padding: 20px;
+  background: transparent;
+  margin-bottom: 30px;
+  width: 100%;
+}
+
+.sect3-hm {
+  display: flex;
+  justify-content: center;
+}
 
 /* Footer Styling */
 .footer {
@@ -185,4 +209,69 @@ hr {
 .extras {
   margin-left: 3%;
   margin-right: 3%;
+}
+
+
+.podium {
+  width: 182px;
+  background: transparent;
+  color: #00FFAA; 
+  text-shadow: 0px 0px 10px rgba(0, 255, 170, 0.7); 
+  padding: 10px; 
+  margin-left: 30%
+}
+
+.level1 {
+  width: 50px;
+  height: 70px;
+  border: 2px solid #00FFAA;
+  border-radius: 5px;
+  margin: 0 2px;
+  margin-top: 30px;
+  background: transparent;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  float: left;
+}
+
+.level2 {
+  width: 50px;
+  height: 100px;
+  border: 2px solid #00FFAA;
+  border-radius: 5px;
+  margin: 0 2px;
+  background: transparent;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  float: left;
+}
+
+.level3 {
+  width: 50px;
+  height: 50px;
+  border: 2px solid #00FFAA;
+  border-radius: 5px;
+  margin: 0 2px;
+  margin-top: 50px;
+  background: transparent;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  float: left;
+}
+
+.neon_dot {
+  float: left;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: #00FFAA;
+  box-shadow: 0 0 10px #00FFAA, 0 0 20px #00FFAA;
+  margin: 10px;
+  margin-top: 12px;
 }

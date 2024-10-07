@@ -24,11 +24,28 @@
          ],
          "name": "Region Type: "
        }
+     },
+     {
+      "name": "no_loss",
+      "bind": {
+        "input": "select",
+        "options": [
+          "No",
+          "Yes"
+        ],
+        "labels": [
+          "No",
+          "Yes"
+        ],
+        "name": "Show Countries with 0 loss: "
+      }
      }
    ],
    "transform": [
+    {"calculate": "parseInt(datum['EXP per adult'])", "as": "EXP"},
      {"filter": "datum.LGA != ''"},
      {"filter": "Reg_Type == null || datum.Region== Reg_Type"},
+      {"filter": "no_loss == 'Yes' || datum['EXP'] > 0"},
      {"calculate": "datum['Unemployment rate Jun 22'] * 100", "as": "UP"}
    ],
      "encoding": {
@@ -81,7 +98,7 @@
          {"field": "LGA Name","type": "nominal"},
          {"field": "EXP per adult","type": "quantitative","title": "Loss per adult","format": "$"},
          {"field": "Unemployment rate Jun 22","type": "quantitative","title":"Unemployment Rate","format":".1%"},
-         {"field": "Adult 2022","type": "quantitative","title": "Population"}
+         {"field": "Adult 2022","type": "quantitative","title": "Population", "format": ","}
        ]
      }
    },

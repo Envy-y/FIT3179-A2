@@ -1,0 +1,82 @@
+{
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+    "background": null,
+    "height": 150,
+      "data": {
+          "url": "https://raw.githubusercontent.com/Envy-y/FIT3179-A2/main/A2%20data.csv",
+          "format": {"type": "csv"}
+      },
+    "transform": [
+      {
+              "calculate": "parseInt(datum['Adult 2022'])", "as": "Population"
+          },
+          {
+              "calculate": "parseInt(datum['Workforce Jun 22'])", "as": "Workforce"
+          },
+          {
+              "calculate": "parseInt(datum['SEIFA Rank'])", "as": "SEIFA Rank"
+          },
+           {
+              "calculate": "parseInt(datum['Loss'])", "as": "Loss"
+          },
+          {
+              "calculate": "parseInt(datum['EXP per adult'])", "as": "EXP"
+          },
+          {
+              "calculate": "parseFloat(datum['Unemployment rate Jun 22'] * 100)", "as": "Ump"
+          },
+          {
+              "calculate": "parseInt(datum['EGM per 1000 Adults'])", "as": "EGM"
+          },
+          {
+              "filter": "datum['LGA Name'] != 'Unincorporated'"
+          },
+           {"window": [{"op": "count", "as": "index"}]},
+          {
+              "fold": ["Population", "Loss","EXP", "Ump","EGM","Workforce"], "as": ["key","value"]
+          },
+          {
+              "joinaggregate": [
+                  {"op": "min", "field": "value", "as": "min"},
+                  {"op": "max", "field": "value", "as": "max"}
+              ],
+              "groupby": ["key"]
+          },
+          {
+              "calculate": "(datum.value - datum.min) / (datum.max - datum.min)",
+              "as": "norm_val"
+          }
+    ],
+    "mark": "rect",
+    "encoding": {
+      "x": {
+        "field": "SEIFA Rank",
+        "type": "nominal",
+        "title": "SEIFA Rank",
+        "axis": {"labelColor": "white", "titleColor": "white", "labelFontSize": 16, "titleFontSize": 16, "gridOpacity": 0.3, "gridColor": "white"}
+      },
+      "y": {
+        "field": "key",
+        "type": "nominal",
+        "title": "Category",
+        "axis": {"labelColor": "white", "titleColor": "white", "labelFontSize": 16, "titleFontSize": 16, "gridOpacity": 0.3, "gridColor": "white"}
+      },
+      "color": {
+        "field": "norm_val",
+        "type": "quantitative",
+        "scale": {
+          "domain": [0, 1], 
+          "scheme": "teals"
+        },
+        "legend": null
+      },
+      "tooltip": [
+        {"field": "LGA Name", "type": "nominal"},
+        {"field": "SEIFA Rank", "type": "quantitative"},
+        {"field": "key", "type": "nominal"},
+        {"field": "value", "type": "quantitative"}
+      ]
+    },
+    "config": {"view": {"stroke": "transparent"}}
+  }
+  

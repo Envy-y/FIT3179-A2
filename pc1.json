@@ -101,7 +101,7 @@
             }, {
                 "type": "quantitative",
                 "field": "Loss",
-                "format": "$"
+                "format": "$,.0f"
             }, {
                 "type": "quantitative",
                 "field": "SEIFA Score"
@@ -119,7 +119,7 @@
     "layer": [{
       "mark": {"type": "text", "style": "label","color": "white"},
       "encoding": {
-        "text": {"aggregate": "max", "field": "max"}
+        "text": {"aggregate": "max", "field": "max","format": ",.0f"}
       }
     }]
   }, {
@@ -130,7 +130,7 @@
     "layer": [{
       "mark": {"type": "text", "style": "label","color": "white"},
       "encoding": {
-        "text": {"aggregate": "min", "field": "mid"}
+        "text": {"aggregate": "min", "field": "mid","format": ",.0f"}
       }
     }
     ]
@@ -142,7 +142,7 @@
     "layer": [{
       "mark": {"type": "text", "style": "label","color": "white"},
       "encoding": {
-        "text": {"aggregate": "min", "field": "min"}
+        "text": {"aggregate": "min", "field": "min","format": ",.0f"}
       }
     }]
   }

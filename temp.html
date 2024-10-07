@@ -58,9 +58,10 @@
 
     <!-- Section 2-->
     <main class="sect2">
-      <div >
+      <div class = "left">
         <h2 class="title">Population, Workforce, Loss and SEIFA Score</h2>
           <div id="pcp"></div>
+          <div style = "padding-bottom: 19px;"></div>
           <div class = "data_description">
             <p class = "description">This parallel coordinate plot compares Population, Workforce, Gambling Loss, and SEIFA Score for different Victorian LGAs.
               The graph divides the two types of LGAs, Country and Metro into two different colours, red and blue respectively.  
@@ -82,9 +83,43 @@
               Additionally, with the colour channel being used to encode the type of LGA, we can see that 
               The loss per Adult is quite similar between Metro and Country LGAs, but Metro LGAs tend to have
               higher Unemployment Rates. This is likely due to the fact that Metro LGAs have higher populations
-              and less job opportunities compared to Country LGAs.</p>
+              and less job opportunities compared to Country LGAs.
+            </p>
       </div>
     </main>
+    <hr>
+
+    <!-- Section 3 -->
+    <section class="sect3">
+      <div>
+        <div class="podium">
+          <div class="level1"><div class = "ssymbol">2</div></div>
+          <div class="level2"><div class = "ssymbol">1</div></div>
+          <div class="level3"><div class = "ssymbol">3</div></div>
+        </div>
+        <h2 class="normal_title">Socioeconomic Insights by SEIFA Rank</h2>
+      </div>
+      
+      
+      <div class="sect3-hm">
+        <div id = "hm" class = "heatmap"></div>
+      </div>
+      <div class = "sect2">
+        <div class = "left">
+          <p class = "neon_dot"></p>
+          <p class = "description">Desc1</p>
+          <br>
+          <p class = "neon_dot"></p>
+          <p class = "description">Desc2</p>
+        </div>
+        <div class = "right">
+          <p class = "neon_dot"></p>
+          <p class = "description">Desc3</p>
+          <br>
+          <p class = "neon_dot"></p>
+          <p class = "description">Desc4</p>
+      </div>
+    </section>
     
     <!-- Footer Section -->
     <footer class="footer">
@@ -127,5 +162,12 @@
           // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
       }).catch(console.error);
     </script>
+     <script>
+      var hm = "./hm1.json";
+      vegaEmbed('#hm', hm, {"actions": false}).then(function(result) {
+          // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
+      }).catch(console.error);
+    </script>
+
 </body>
 </html>
