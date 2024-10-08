@@ -58,10 +58,8 @@ body {
   margin-top: 10px;
   color: #c9c0b5; 
   text-shadow: 0px 0px 2px rgba(0, 255, 170, 0.7); /* Glowing effect */
-  max-width: 900px;
-  align-self: center;
-  position: relative;
-  margin-bottom: 50px;
+  max-width: 800px;
+  margin-bottom: 30px;
 }
 .glossary {
   border-right: 3px solid white;
@@ -92,7 +90,7 @@ li {
 }
 
 hr {
-  margin-top: 3%;
+  margin-top: 1.5%;
 }
 .map-container {
   margin-top: 10%;
@@ -153,7 +151,7 @@ hr {
   align-items: top;
   padding: 20px;
   background: transparent;
-  margin-bottom: 30px;
+  margin-bottom: 10px;
 }
 
 .data_description {
@@ -172,11 +170,12 @@ hr {
 }
 
 .normal_title {
+  text-align: center;
   font-size: 2rem;
   font-weight: bold;
   text-shadow: 0px 0px 5px rgba(0, 255, 170, 0.7);
-  padding: 5px;
-  margin: 5px;
+  margin-left: 30%;
+  margin-right: 30%;
 }
 
 .right {
@@ -196,6 +195,15 @@ hr {
   justify-content: center;
 }
 
+.sect3_desc {
+  font-size: 1.3rem;
+  color: #c9c0b5;
+  text-shadow: 0px 0px 2px rgba(0, 255, 170, 0.7);
+  margin-left: 30%;
+  margin-right: 30%;
+  padding-left: 1.5%;
+}
+
 /* Footer Styling */
 .footer {
   display: grid;
@@ -213,21 +221,21 @@ hr {
 
 
 .podium {
-  width: 182px;
+  width: 242px;
   background: transparent;
   color: #00FFAA; 
   text-shadow: 0px 0px 10px rgba(0, 255, 170, 0.7); 
   padding: 10px; 
-  margin-left: 30%
+  margin-left: 20%
 }
 
 .level1 {
-  width: 50px;
-  height: 70px;
+  width: 70px;
+  height: 130px;
   border: 2px solid #00FFAA;
   border-radius: 5px;
   margin: 0 2px;
-  margin-top: 30px;
+  margin-top: 50px;
   background: transparent;
   display: flex;
   flex-direction: column;
@@ -237,8 +245,8 @@ hr {
 }
 
 .level2 {
-  width: 50px;
-  height: 100px;
+  width: 70px;
+  height: 180px;
   border: 2px solid #00FFAA;
   border-radius: 5px;
   margin: 0 2px;
@@ -251,12 +259,12 @@ hr {
 }
 
 .level3 {
-  width: 50px;
-  height: 50px;
+  width: 70px;
+  height: 100px;
   border: 2px solid #00FFAA;
   border-radius: 5px;
   margin: 0 2px;
-  margin-top: 50px;
+  margin-top: 80px;
   background: transparent;
   display: flex;
   flex-direction: column;
