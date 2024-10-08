@@ -6,34 +6,62 @@
           "url": "https://raw.githubusercontent.com/Envy-y/FIT3179-A2/main/A2%20data.csv",
           "format": {"type": "csv"}
       },
+    "params": [
+      {
+        "name": "Region_select",
+        "bind": {
+          "input": "select",
+          "options": [
+            null,
+            "Country",
+            "Metro"
+          ],
+          "labels": [
+            "All",
+            "Country",
+            "Metro"
+          ],
+          "name": "Region Type: "
+        }
+      }
+    ],
     "transform": [
       {
               "calculate": "parseInt(datum['Adult 2022'])", "as": "Population"
           },
           {
-              "calculate": "parseInt(datum['Workforce Jun 22'])", "as": "Workforce"
+              "calculate": "parseInt(datum['SEIFA Rank'])", "as": "SEIFA Rank"
           },
           {
-              "calculate": "parseInt(datum['SEIFA Rank'])", "as": "SEIFA Rank"
+            "calculate": "parseInt(datum['SEIFA Rank Metro'])", "as": "SEIFA Rank Metro"
+          },
+          {
+              "calculate": "parseInt(datum['SEIFA Rank Country'])", "as": "SEIFA Rank Country"
           },
            {
               "calculate": "parseInt(datum['Loss'])", "as": "Loss"
           },
           {
-              "calculate": "parseInt(datum['EXP per adult'])", "as": "EXP"
+              "calculate": "parseInt(datum['EXP per adult'])", "as": "Loss per Adult"
           },
           {
-              "calculate": "parseFloat(datum['Unemployment rate Jun 22'] * 100)", "as": "Ump"
+              "calculate": "parseFloat(datum['Unemployment rate Jun 22'] * 100)", "as": "Unemployment Rate"
           },
           {
-              "calculate": "parseInt(datum['EGM per 1000 Adults'])", "as": "EGM"
+              "calculate": "parseInt(datum['EGM per 1000 Adults'])", "as": "EGM per 1000 Adults"
           },
           {
               "filter": "datum['LGA Name'] != 'Unincorporated'"
           },
+          {
+              "filter": "Region_select == null || datum.Region== Region_select"
+          },
+          {
+            "calculate": "Region_select == 'Metro' ? datum['SEIFA Rank Metro'] : Region_select == 'Country' ? datum['SEIFA Rank Country'] : datum['SEIFA Rank']", "as": "SEIFA"
+          },
            {"window": [{"op": "count", "as": "index"}]},
           {
-              "fold": ["Population", "Loss","EXP", "Ump","EGM","Workforce"], "as": ["key","value"]
+              "fold": ["Population", "Loss","Loss per Adult", "Unemployment Rate","EGM per 1000 Adults"], "as": ["key","value"]
           },
           {
               "joinaggregate": [
@@ -50,7 +78,7 @@
     "mark": "rect",
     "encoding": {
       "x": {
-        "field": "SEIFA Rank",
+        "field": "SEIFA",
         "type": "nominal",
         "title": "SEIFA Rank",
         "axis": {"labelColor": "white", "titleColor": "white", "labelFontSize": 16, "titleFontSize": 16, "gridOpacity": 0.3, "gridColor": "white"}
@@ -73,10 +101,10 @@
       "tooltip": [
         {"field": "LGA Name", "type": "nominal"},
         {"field": "SEIFA Rank", "type": "quantitative"},
-        {"field": "key", "type": "nominal"},
+        {"field": "key", "type": "nominal", "title": "Category"},
         {"field": "value", "type": "quantitative"}
       ]
     },
-    "config": {"view": {"stroke": "transparent"}}
+    "config": {"view": {"stroke": "transparent"}, "axis": {"domain": false}}
   }
   
