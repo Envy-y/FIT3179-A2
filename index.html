@@ -1,137 +1,181 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-
-        <script src="https://cdn.jsdelivr.net/npm/vega@5"></script>
-        <script src="https://cdn.jsdelivr.net/npm/vega-lite@5"></script>
-        <script src="https://cdn.jsdelivr.net/npm/vega-embed@6"></script>
-
-        <style>
-            /* Center-align the title */
-            h1 {
-                text-align: center;
-                margin-top: 20px;
-                font-size: 24px;
-            }
-
-            /* Create a container for the content */
-            .content1 {
-                display: flex;
-                justify-items: center;
-                margin-inline: 250px;
-                margin-top: 20px;
-                border: solid 1px #000000;
-            }
-
-            .content2 {
-                display: flex;
-                justify-items: center;
-                margin-inline: 250px;
-                margin-top: 20px;
-                border: solid 1px #000000;
-            }
-
-            /* Style for the left section (chart) */
-            .left {
-                padding: 10px;
-                padding-right: none;
-            }
-
-            /* Style for the right section (text paragraph) */
-            .right {
-                flex: 1;
-                font-size: 14px;
-                line-height: 1.6;
-                padding: 10px;
-                word-wrap: break-word; /* Ensure words break to the next line if too long */
-                max-width: 450px;
-                align-self: flex-start;
-            }
-
-            /* Ensure the chart does not overflow the container */
-            #vis {
-                max-width: 100%;
-                max-height: 100%;
-            }
-
-            /* Small Break */
-            .sb {
-                margin-bottom: 10px;
-            }
-
-            /* Large Break */
-            .lb {
-                margin-bottom: 50px;
-            }
-        </style>
-    </head>
-    <body>
-        <!-- Centered Title -->
-        <h1>FIT3179 Homework - Interactive Chart</h1>
-
-        <!-- Flexbox Container for Chart and Text -->
-        <div class="content1">
-            <!-- Left section for Vega-Lite chart -->
-            <div class="left">
-                <div id="vis1"></div>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://cdn.jsdelivr.net/npm/vega@5"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vega-lite@5"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vega-embed@6"></script>
+  <title>FIT3179 Data Viz 2</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="container">
+    <header class="header">
+        <div>
+          <h1 class="main-title">Wagering Woes</h1>
+          <h2 class="sub-title">A Data Dive into EGM Loss and its Socioeconomic Impact</h2>
+          <br>
+          <div class="below_title">
+            <hr style="max-width: 90%;">
+            <br>
+            <div class="slot-machine">
+              <div class="reel">
+                  <div class="symbol">-</div>
+                  <div class="symbol">7</div>
+                  <div class="symbol">-</div>
+              </div>
+              <div class="reel">
+                  <div class="symbol">-</div>
+                  <div class="symbol">7</div>
+                  <div class="symbol">-</div>
+              </div>
+              <div class="reel">
+                  <div class="symbol">-</div>
+                  <div class="symbol">7</div>
+                  <div class="symbol">-</div>
+              </div>
             </div>
+            <h2 class = "sub-title">About the Dataset</h2>
+            <p class = "description"> This visualisation poster aims to explore and highlight the economic and social impacts 
+              of losses from electronic gaming machines (EGMs) across all Victorian Local Government Areas (LGAs). 
+              By integrating data such as total losses, SEIFA scores, unemployment rates, and the number of EGMs per 1000 people, 
+              the poster provide insights into how gambling activities (notably loss from EGMs) are distributed across different LGAs, and
+              their subsequent socialeconomic impacts. The visualisations in the poster seek to uncover patterns that can inform policy discussions 
+              and targeted interventions to mitigate the negative effects of EGMs on vulnerable communities.
+              <br><br>
+              Note: All data is for the financial year <strong>2021-2022</strong>
+            </p>
+          </div>
+      </div>
+      <div class="map-container">
+        <h2>Average Loss Per Adult Across LGAs</h2>
+        <div id="map1"></div>
+      </div>
+      <hr>
+      <hr>
+    </header>
 
-            <!-- Right section for the text paragraph -->
-            <div class="right">
-                <p>
-                    This parallel coordinate plot compares Population, Workforce, Gambling Loss, and SEIFA Score for different Victorian LGAs.
-                    The graph divides the two types of LGAs, Country and Metro into two different colours, red and blue respectively.  
-                    Overall, it seems that Metro LGAs have higher Population, Workforce, Gambling Loss and SEIFA Score compared to Country LGAs, but that
-                    does not hold true for all. In fact, there is a clear negative correlation between Gambling Loss and SEIFA Score, so some Metro LGAs with high
-                    Gambling Loss end up with lower SEIFA Scores than most Country LGAs.
-                    <br class="lb">
-                    <strong>Key Terms:</strong>
-                    <br class="sb">
-                    <strong>SEIFA Score:</strong> Socio-Economic Indexes for Areas Score, a measure of the relative socio-economic advantage and disadvantage of areas in Australia.
-                    <br class="sb">
-                    <strong>LGA:</strong> Local Government Area, a geographical area that is a division of a local government.
-                    <br class="sb">
-                    <strong>Country:</strong> Rural areas outside of Melbourne.
-                    <br class="sb">
-                    <strong>Metro:</strong> Areas within Melbourne.
-                </p>
-            </div>
+    <!-- Section 2-->
+    <main class="sect2">
+      <div class = "left">
+        <h2 class="title">Population, Workforce, Loss and SEIFA Score</h2>
+          <div id="pcp"></div>
+          <div style = "padding-bottom: 19px;"></div>
+          <div class = "data_description">
+            <p class = "description">This parallel coordinate plot compares Population, Workforce, Gambling Loss, and SEIFA Score for different Victorian LGAs.
+              The graph divides the two types of LGAs, Country and Metro into two different colours, red and blue respectively.  
+              Overall, it seems that Metro LGAs have higher Population, Workforce, Gambling Loss and SEIFA Score compared to Country LGAs, but that
+              does not hold true for all. In fact, there is a clear negative correlation between Gambling Loss and SEIFA Score, so some Metro LGAs with high
+              Gambling Loss end up with lower SEIFA Scores than most Country LGAs.</p>
+          </div>
+      </div>
+      <div class = "right">
+        <h2 class="title">Loss per Adult vs Unemployment Rate</h2>
+          <div id="bbp"></div>
+          <div class = "data_description">
+            <p class = "description">This bubble plot shows Unemployment Rate on the x-axis, Loss per Adult on the y-axis, 
+              and Population as the size of the bubble. Excluding the LGAs with 0 loss (No Gambling Venues),
+              there is a <strong>clear positive correlation</strong> between Loss per Adult and Unemployment Rate. Additionally, 
+              despite the data are normalised, we see that LGAs with larger populations still tend to have 
+              higher Loss per Adult and Unemployment Rate.
+              <br><br>
+              Additionally, with the colour channel being used to encode the type of LGA, we can see that 
+              The loss per Adult is quite similar between Metro and Country LGAs, but Metro LGAs tend to have
+              higher Unemployment Rates. This is likely due to the fact that Metro LGAs have higher populations
+              and less job opportunities compared to Country LGAs.
+            </p>
+      </div>
+    </main>
+    <hr>
+
+    <!-- Section 3 -->
+    <section class="sect3">
+      <div style = "align-content: center;">
+        <div class="podium">
+          <div class="level1"><div class = "ssymbol">2</div></div>
+          <div class="level2"><div class = "ssymbol">1</div></div>
+          <div class="level3"><div class = "ssymbol">3</div></div>
         </div>
-
-        <div class="content2">
-            <div class="left">
-                <div id="vis2"></div>
-            </div>
-            <div class="right">
-                <p>
-                    This bubble plot shows Unemployment Rate on the x-axis, Loss per Adult on the y-axis, 
-                    and Population as the size of the bubble. Excluding the LGAs with 0 loss (No Gambling Venues),
-                    there is a <strong>clear positive correlation</strong> between Loss per Adult and Unemployment Rate. Additionally, 
-                    despite the data are normalised, we see that LGAs with larger populations still tend to have 
-                    higher Loss per Adult and Unemployment Rate.
-                    <br></br>
-                    Additionally, with the colour channel being used to encode the type of LGA, we can see that 
-                    The loss per Adult is quite similar between Metro and Country LGAs, but Metro LGAs tend to have
-                    higher Unemployment Rates. This is likely due to the fact that Metro LGAs have higher populations
-                    and less job opportunities compared to Country LGAs.
-                </p>
-            </div>
+        <h2 class="normal_title">Socioeconomic Insights by SEIFA Rank</h2>
+        <br>
+        <br>
+        <div class = "sect3_desc">
+          <p>The heat map below compares some socioeconomic factors against the SEIFA Rank of all LGAs. The higher the SEIFA rank, the more advantaged the LGA is
+            socioeconomically. Note: all the data is normalised to allow for comparison, to see exact values, hover over a specific cell to see the tooltip.</p>
+          </p>
         </div>
+      </div>
+      
+      
+      <div class="sect3-hm">
+        <div id = "hm" class = "heatmap"></div>
+      </div>
+      <h2 class="normal_title" style = "text-align: center;">Key Insights</h2>
+      <div class = "sect2">
+        <div class = "left">
+          <p class = "neon_dot"></p>
+          <p class = "description">Higher ranked LGAs have <strong>less</strong> EGM per 1000 adults</p>
+          <br>
+          <p class = "neon_dot"></p>
+          <p class = "description">Higher ranked LGAs have <strong>less</strong> loss per adult</p>
+        </div>
+        <div class = "right">
+          <p class = "neon_dot"></p>
+          <p class = "description">Lower ranked LGAs are <strong>less</strong> populated</p>
+          <br>
+          <p class = "neon_dot"></p>
+          <p class = "description">Lower ranked LGAs have a <strong>higher</strong> unemployment rate</p>
+      </div>
+    </section>
+    
+    <!-- Footer Section -->
+    <footer class="footer">
+      <div class = "glossary">
+        <h3 class = "glossary_title"><strong>Glossary</strong></h3>
+          <ul class = "glossary_text">
+            <li><strong>LGA:</strong> Local Government Area, a geographical area that is a division of a local government.</li>
+            <li><strong>SEIFA Score:</strong> Socio-Economic Indexes for Areas Score, a measure of the relative socio-economic advantage and disadvantage of areas in Australia.</li>
+            <li><strong>Country:</strong> Rural areas outside of Melbourne.</li>
+            <li><strong>Metro:</strong> Metropolitan Areas within Melbourne.</li>
+            <li><strong>EGM:</strong> Electronic Gaming Machines</li>
+          </ul>
+        </div>
+      <div class = "extras">
+        <h3 class = "glossary_title"><strong>Additional Information</strong></h3>
+        <ul class = "glossary_text">
+          <li>Data was sourced from the Victorian Commission for Gambling and Liquor Regulation (VCGLR)</li>
+          <li>Link: <a href="https://www.vgccc.vic.gov.au/resources/information-and-data/expenditure-data">https://www.vgccc.vic.gov.au/resources/information-and-data/expenditure-data</a></li>
+          <li>Created by: Guoyang Zheng</li>
+          <li>Student ID: 33116156</li>
+      </div>
+    </footer>
+  </div>
+    <!-- Vega-Lite Embedding Script -->
+    <script type="text/javascript">
+      var map = "./map.vg.json";
+      vegaEmbed('#map1', map, {"actions": false}).then(function(result) {
+          // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
+      }).catch(console.error);
+    </script>
+    <script>
+      var pc = "./bbp1.json";
+      vegaEmbed('#bbp', pc, {"actions": false}).then(function(result) {
+          // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
+      }).catch(console.error);
+    </script>
+    <script>
+      var pc = "./pc1.json";
+      vegaEmbed('#pcp', pc, {"actions": false}).then(function(result) {
+          // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
+      }).catch(console.error);
+    </script>
+     <script>
+      var hm = "./hm1.json";
+      vegaEmbed('#hm', hm, {"actions": false}).then(function(result) {
+          // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
+      }).catch(console.error);
+    </script>
 
-        <!-- Vega-Lite Embedding Script -->
-        <script type="text/javascript">
-            var pc = "./pc.json";
-            vegaEmbed('#vis1', pc).then(function(result) {
-                // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
-            }).catch(console.error);
-        </script>
-
-        <script>
-            var bb = "./BubblePlot.json";
-            vegaEmbed('#vis2', bb).then(function(result) {
-                // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
-            }).catch(console.error);
-        </script>
+</body>
+</html>
