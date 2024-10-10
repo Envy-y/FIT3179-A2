@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Toggle Description</title>
+    <style>
+        /* Basic styling for the button and description */
+        #description {
+            display: none;
+            margin-top: 10px;
+            padding: 10px;
+            border: 1px solid #ddd;
+            background-color: #f9f9f9;
+        }
+        button {
+            padding: 10px 15px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+
+    <button onclick="toggleDescription()">Show Description</button>
+
+    <div id="description">
+        <p>This is the description that appears when you click the button. You can add more details about whatever you want here.</p>
+    </div>
+
+    <script>
+        function toggleDescription() {
+            var description = document.getElementById("description");
+            if (description.style.display === "none") {
+                description.style.display = "block";
+            } else {
+                description.style.display = "none";
+            }
+        }
+    </script>
+
+</body>
+</html>
