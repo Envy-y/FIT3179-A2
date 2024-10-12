@@ -2,7 +2,6 @@
     "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
    "width": 510,
    "height": 400,
-   "title": "Loss Per Adult vs Unemployment Rate (Jun 2022)",
     "background": null,
    "data": {
              "url": "https://raw.githubusercontent.com/Envy-y/FIT3179-A2/main/A2%20data.csv",
@@ -25,23 +24,42 @@
          ],
          "name": "Region Type: "
        }
+     },
+     {
+      "name": "no_loss",
+      "bind": {
+        "input": "select",
+        "options": [
+          "No",
+          "Yes"
+        ],
+        "labels": [
+          "No",
+          "Yes"
+        ],
+        "name": "Show Countries with 0 loss: "
+      }
      }
    ],
    "transform": [
+    {"calculate": "parseInt(datum['EXP per adult'])", "as": "EXP"},
      {"filter": "datum.LGA != ''"},
      {"filter": "Reg_Type == null || datum.Region== Reg_Type"},
+      {"filter": "no_loss == 'Yes' || datum['EXP'] > 0"},
      {"calculate": "datum['Unemployment rate Jun 22'] * 100", "as": "UP"}
    ],
      "encoding": {
        "x": {
          "field": "UP",
          "type": "quantitative",
-         "title": "Unemployment Rate (%)"
+         "title": "Unemployment Rate (%)",
+         "axis": {"labelColor": "white", "titleColor": "white", "labelFontSize": 16, "titleFontSize": 16, "gridOpacity": 0.3, "gridColor": "white"}
        },
        "y": {
          "field": "EXP per adult",
          "type": "quantitative",
-         "title": "Loss per adult ($)"
+         "title": "Loss per adult ($)",
+          "axis": {"labelColor": "white", "titleColor": "white", "labelFontSize": 16, "titleFontSize": 16, "gridOpacity": 0.3, "gridColor": "white"}
      }
     },
     "layer": [
@@ -57,10 +75,10 @@
              "range": [50, 150, 200, 250, 300]
            },
          "legend": {
-           "title": "Population"
+           "title": "Population", "labelColor": "white", "titleColor": "white", "labelFontSize": 16, "titleFontSize": 16, "symbolFillColor": "white"
          }
        },
-       "opacity": {"value": 0.5},
+       "opacity": {"value": 0.75},
        "color": {
          "field": "Region",
          "type": "nominal",
@@ -73,13 +91,14 @@
              "#e41a1c",
              "#377eb8"
            ]
-         }
+         },
+          "legend": {"labelColor": "white", "labelFontSize": 16, "titleColor": "white", "titleFontSize": 16}
        },
        "tooltip": [
          {"field": "LGA Name","type": "nominal"},
          {"field": "EXP per adult","type": "quantitative","title": "Loss per adult","format": "$"},
          {"field": "Unemployment rate Jun 22","type": "quantitative","title":"Unemployment Rate","format":".1%"},
-         {"field": "Adult 2022","type": "quantitative","title": "Population"}
+         {"field": "Adult 2022","type": "quantitative","title": "Population", "format": ","}
        ]
      }
    },
@@ -94,7 +113,7 @@
        },
        "encoding": {
          "text": {"field": "LGA Name", "type": "nominal"},
-         "color": {"value": "black"},
+         "color": {"value": "white"},
          "opacity": {
            "condition": {
              "test": "datum['LGA Name'] == 'Melbourne' || datum['LGA Name'] == 'Greater Dandenong' || datum['LGA Name'] == 'Monash' || datum['LGA Name'] == 'Greater Geelong'",
